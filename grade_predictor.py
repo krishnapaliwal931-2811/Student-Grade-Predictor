@@ -19,9 +19,8 @@ from sklearn.metrics import (mean_absolute_error, mean_squared_error,
 import warnings
 warnings.filterwarnings("ignore")
 
-# ──────────────────────────────────────────────
 # 1.  GENERATE SYNTHETIC DATASET
-# ──────────────────────────────────────────────
+
 np.random.seed(42)
 N = 300
 
@@ -32,6 +31,7 @@ assignments_done = np.random.randint(0, 10, N)            # out of 10
 sleep_hours      = np.random.uniform(4, 9, N)             # hrs/night
 
 # Realistic score formula with noise
+
 final_score = (
     0.30 * attendance
     + 4.5 * study_hours
@@ -70,9 +70,9 @@ print(df.head().to_string(index=False))
 print("\nGrade distribution :")
 print(df["grade"].value_counts().sort_index().to_string())
 
-# ──────────────────────────────────────────────
+
 # 2.  EXPLORATORY DATA ANALYSIS  (save plots)
-# ──────────────────────────────────────────────
+
 import os
 os.makedirs("plots", exist_ok=True)
 
@@ -102,9 +102,9 @@ plt.tight_layout()
 plt.savefig("plots/02_correlation_heatmap.png", dpi=150)
 plt.close()
 
-# ──────────────────────────────────────────────
+
 # 3.  MODEL A – LINEAR REGRESSION (predict score)
-# ──────────────────────────────────────────────
+
 features = ["attendance_pct","study_hours_day","prev_exam_score",
             "assignments_done","sleep_hours"]
 X = df[features]
@@ -144,9 +144,9 @@ plt.tight_layout()
 plt.savefig("plots/03_lr_actual_vs_predicted.png", dpi=150)
 plt.close()
 
-# ──────────────────────────────────────────────
+
 # 4.  MODEL B – DECISION TREE (predict grade)
-# ──────────────────────────────────────────────
+
 le = LabelEncoder()
 y_clf = le.fit_transform(df["grade"])          # A=0 B=1 C=2 D=3 F=4
 
@@ -192,9 +192,9 @@ plt.tight_layout()
 plt.savefig("plots/05_decision_tree.png", dpi=150)
 plt.close()
 
-# ──────────────────────────────────────────────
+
 # 5.  INTERACTIVE PREDICTOR  (simple CLI)
-# ──────────────────────────────────────────────
+
 print("\n─────────────────────────────────────────")
 print("  SAMPLE PREDICTION (new student data)")
 print("─────────────────────────────────────────")
