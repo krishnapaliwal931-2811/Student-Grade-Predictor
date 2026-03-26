@@ -1,9 +1,6 @@
-# ============================================================
 #  Student Grade Predictor
-#  Author : [Your Name]
-#  Course : Fundamentals of AI and ML  (BYOP Project)
-#  Model  : Linear Regression + Decision Tree Classifier
-# ============================================================
+#  Author : KRISHNA PALIWAL
+#  Course : Fundamentals of AI and ML 
 
 import pandas as pd
 import numpy as np
